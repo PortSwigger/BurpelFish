@@ -1,0 +1,12 @@
+Uuid: 0902e34e38be4dfc82475d7b47774a48
+ExtensionType: 2
+Name: burpelfish
+RepoName: burpelfish
+ScreenVersion: 0.04
+SerialVersion: 0
+MinPlatformVersion: 0
+ProOnly: False
+Author: Paul Taylor
+ShortDescription: Adds Google Translate to Burp's context menu.
+EntryPoint: burpelfish.py
+BuildCommand: 

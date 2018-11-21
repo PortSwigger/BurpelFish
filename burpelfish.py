@@ -227,8 +227,8 @@ class MenuFactory(IContextMenuFactory):
     bytes = None
     src = 'Automatic'
     dst = 'English'
-    src_menu_text = '   - Translate with Google (Current selection)'
-    dst_menu_text = '   - Translate with Google (Clipboard contents)'
+    src_menu_text = 'Translate with Google (Current selection)'
+    dst_menu_text = 'Translate with Google (Clipboard contents)'
 
     def get_clipboard_text(self):
 
@@ -299,11 +299,10 @@ class MenuFactory(IContextMenuFactory):
         if self.get_clipboard_text() is not None:
             menu_translate_clip.setEnabled(True)
 
-        menu_header = JMenuItem('%s v%s' % (
+        menu_header = JMenu('%s v%s' % (
             BurpExtender.extension_name, BurpExtender.extension_version))
-        menu_header.setEnabled(False)
-        menu_src = JMenu('   - Source Language [%s]' % (self.src))
-        menu_dst = JMenu('   - Destination Language [%s]' % (self.dst))
+        menu_src = JMenu('Source Language [%s]' % (self.src))
+        menu_dst = JMenu('Destination Language [%s]' % (self.dst))
         menu_automatic = JCheckBoxMenuItem(
             'Automatic', actionPerformed=self.select_src)
         menu_src.add(menu_automatic)
@@ -321,7 +320,12 @@ class MenuFactory(IContextMenuFactory):
                 menu_item.setSelected(True)
             menu_dst.add(menu_item)
 
-        return [menu_header, menu_src, menu_dst, menu_translate_sel, menu_translate_clip]
+        menu_header.add(menu_src)
+        menu_header.add(menu_dst)
+        menu_header.add(menu_translate_sel)
+        menu_header.add(menu_translate_clip)
+
+        return [menu_header]
 
 
 class BurpExtender(IBurpExtender):

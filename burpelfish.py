@@ -193,6 +193,7 @@ def popup_translate(control, query, src, dst, message, selection, text, context,
         buttons = ['Copy to Clipboard', 'OK']
     label = JLabel('<html>%s to %s:<br><br><b>%s</b><br><br><img border=0 src="file:///%s/color-short.png"></html>' %
                    (result_src, dst, result.decode('utf-8', 'strict'), get_script_dir()))
+    label.putClientProperty("html.disable", None)
 
     label.addMouseListener(mouseAdapter())
 
